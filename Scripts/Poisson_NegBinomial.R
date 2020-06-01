@@ -1,9 +1,14 @@
 ####################################################################
 requiredPackages = c('dplyr','MASS','stargazer','ggplot2','pscl','reshape2','summarytools')
-for(p in requiredPackages){
-  if(!require(p,character.only = TRUE)) install.packages(p)
-  library(p,character.only = TRUE)
-}
+package.check <- lapply(
+  requiredPackages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  }
+)
 
 # dplyr -- #basic data management & %>%
 #MASS -- #for negative bin regression

@@ -1,9 +1,14 @@
 ###############################################
 requiredPackages = c('ggplot2','scales','gridExtra')
-for(p in requiredPackages){
-  if(!require(p,character.only = TRUE)) install.packages(p)
-  library(p,character.only = TRUE)
-}
+package.check <- lapply(
+  requiredPackages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  }
+)
 ###############################################
 setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
 filePath <- "Data/"
