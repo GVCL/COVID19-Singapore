@@ -1,14 +1,17 @@
-library("ggplot2")
-library("scales")
-library(gridExtra)
-
+###############################################
+requiredPackages = c('ggplot2','scales','gridExtra')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
+###############################################
 setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
 filePath <- "Data/"
 fileName <- "SortedRecoveryData.csv"
 
 COVID_DATA <- read.csv(paste(filePath,fileName,sep=""), sep=",", header = TRUE)  
 
-##################### Period_I ###### 
+##################### Period_I ##################################################### 
 subset <- COVID_DATA$Period_Confirmed == 'P_I'
 COVID <- COVID_DATA[subset,]
 p1 <- qplot(data=COVID,x=as.Date(COVID_Confirm_Date),y=DaysInHospital, label = PatientID, geom=("point"), hjust=0, vjust=0)+ 
@@ -28,8 +31,8 @@ p1 <- qplot(data=COVID,x=as.Date(COVID_Confirm_Date),y=DaysInHospital, label = P
      
  
 Newp1<- p1 + stat_smooth(color = "#FC4E07", fill = "#FC4E07", method = "loess")
-################################################################################
-##################### Period_II ###### 
+#####################################################################################
+##################### Period_II #####################################################
 subset <- COVID_DATA$Period_Confirmed == 'P_II'
 COVID <- COVID_DATA[subset,]
 p2 <- qplot(data=COVID,x=as.Date(COVID_Confirm_Date),y=DaysInHospital, label = PatientID, geom=("point"), hjust=0, vjust=0)+ 
@@ -49,8 +52,8 @@ p2 <- qplot(data=COVID,x=as.Date(COVID_Confirm_Date),y=DaysInHospital, label = P
      
  
 Newp2<- p2 + stat_smooth(color = "#FC4E07", fill = "#FC4E07", method = "loess")
-################################################################################
-##################### Period_III ###### 
+######################################################################################
+##################### Period_III ##################################################### 
 subset <- COVID_DATA$Period_Confirmed == 'P_III'
 COVID <- COVID_DATA[subset,]
 p3 <- qplot(data=COVID,x=as.Date(COVID_Confirm_Date),y=DaysInHospital, label = PatientID, geom=("point"), hjust=0, vjust=0)+ 
@@ -76,4 +79,4 @@ Newp3<- p3 + stat_smooth(color = "#FC4E07", fill = "#FC4E07", method = "loess")
 pdf("Loess-Curve-3Periods.pdf", width = 8, height  = 6)
 grid.arrange(Newp1, Newp2, Newp3, ncol = 3, nrow = 1)
 dev.off()
-################################################################################
+########################################################################################

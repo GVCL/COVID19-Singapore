@@ -1,6 +1,10 @@
-library(ggplot2)
-library(dplyr)
-
+###############################################
+requiredPackages = c('ggplot2','dplyr')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
+###############################################
 setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
 filePath <- "Data/"
 fileName <- "SortedRecoveryData.csv"
@@ -29,3 +33,4 @@ theme(legend.box.just = "right",
       axis.title=element_text(size=12,face="bold"))
 scatterPlot
 dev.off()
+###############################################

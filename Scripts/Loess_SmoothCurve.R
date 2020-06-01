@@ -1,5 +1,11 @@
-library("ggplot2")
-library("scales")
+###############################################
+requiredPackages = c('ggplot2','scales')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
+###############################################
+
 setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
 filePath <- "Data/"
 fileName <- "SortedRecoveryData.csv"
@@ -28,3 +34,4 @@ p + stat_smooth(color = "#FC4E07", fill = "#FC4E07", method = "loess")
 p + stat_smooth(aes(outfit=fit<<-..y..), color = "#FC4E07", fill = "#FC4E07", method = "loess")
 
 dev.off()
+###############################################

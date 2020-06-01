@@ -1,14 +1,18 @@
-###############################################
-library(dplyr) #basic data management & %>%
-library(MASS) #for negative bin regression
-library(stargazer) #for combining output
-library(ggplot2) #for graphing
-library(pscl) #for zero inflated models & predprob
-library(reshape2) #convert wide to tall
-library(summarytools) #freq
-library(AICcmodavg)
-library(dplyr)
-###############################################
+####################################################################
+requiredPackages = c('dplyr','MASS','stargazer','ggplot2','pscl','reshape2','summarytools')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
+
+# dplyr -- #basic data management & %>%
+#MASS -- #for negative bin regression
+#stargazer -- #for combining output
+#ggplot2 -- #for graphing
+#pscl -- #for zero inflated models & predprob
+#reshape2 -- #convert wide to tall
+#summarytools -- #freq
+####################################################################
 
 
 setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
@@ -57,7 +61,7 @@ gg +
   scale_x_continuous(labels = as.character(xlab), breaks = xlab)  
 
 dev.off()
-
+############################ GLM ########################################
 linear <- glm(DaysInHospital ~ Age + Gender1 + Period_Confirmed1, data = COVID) #identity link, OLS
 pois <- glm(DaysInHospital ~ Age + Gender1 + Period_Confirmed1, "poisson", data = COVID) #Poisson
 negb <- glm.nb(DaysInHospital ~ Age + Gender1 + Period_Confirmed1, data = COVID) #Negative Binomial
@@ -95,3 +99,4 @@ ggplot(mm, aes(x = x, y = prob, group = Model, col = Model)) +
   scale_x_continuous(labels = as.character(xlab), breaks = xlab) 
   
 dev.off()
+####################################################################

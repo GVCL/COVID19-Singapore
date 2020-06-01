@@ -1,3 +1,4 @@
+###############################################
 setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
 filePath <- "Data/"
 fileName <- "Datewise-Count.csv"
@@ -24,7 +25,7 @@ grid(NA, 4, lwd = 2)
 
 
 dev.off()
-
+###############################################
 
 pdf("Cases-Recovered.pdf", width = 10, height  = 6)
    
@@ -46,3 +47,4 @@ box()
 grid(NA, 4, lwd = 2)
 
 dev.off()
+###############################################
