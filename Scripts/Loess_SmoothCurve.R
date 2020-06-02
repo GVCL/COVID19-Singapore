@@ -11,10 +11,10 @@ package.check <- lapply(
 )
 ###############################################
 
-setwd("~/Singapore/Data") # Setting Working Directory
+setwd("~/COVID19-Singapore-master/Data") # Setting Working Directory
 COVID <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")     
 
-pdf("~/Singapore/Loess-Curve.pdf", width = 10, height  = 6)
+pdf("~/COVID19-Singapore-master/Loess-Curve.pdf", width = 10, height  = 6)
    
 # Loess Smoothing
 p <- qplot(data=COVID,x=as.Date(COVID_Confirm_Date),y=DaysInHospital, label = PatientID, geom=("point"), hjust=0, vjust=0)+ 

@@ -11,11 +11,11 @@ package.check <- lapply(
 )
 ###############################################
 
-setwd("~/Singapore/Data") # Setting Working Directory
+setwd("~/COVID19-Singapore-master/Data") # Setting Working Directory
 COVID <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")      
 
 ######  Box Plot with all Age groups and Genders of Clinically Recovered Cases ####
-pdf("~/Singapore/AgeRange_Gender_BoxPlot.pdf", width = 8, height  = 5)
+pdf("~/COVID19-Singapore-master/AgeRange_Gender_BoxPlot.pdf", width = 8, height  = 5)
 
 newCOVID <- COVID %>% 
   mutate(
@@ -47,7 +47,7 @@ pdata
 
 #######  Box Plot with all Age groups of Clinically Recovered Cases ################
 
-pdf("~/Singapore/AgeGroup_BoxPlot.pdf", width = 8, height  = 6)
+pdf("~/COVID19-Singapore-master/AgeGroup_BoxPlot.pdf", width = 8, height  = 6)
 
 p <- ggplot(COVID, aes(x = AgeRange, y=DaysInHospital, fill=AgeRange)) 
 dims <- COVID %>% group_by(AgeRange) %>% mutate(med=median(DaysInHospital))

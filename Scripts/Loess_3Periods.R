@@ -10,7 +10,7 @@ package.check <- lapply(
   }
 )
 ###############################################
-setwd("~/Singapore/Data") # Setting Working Directory
+setwd("~/COVID19-Singapore-master/Data") # Setting Working Directory
 COVID_DATA <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")   
 
 ##################### Period_I ##################################################### 
@@ -78,7 +78,7 @@ p3 <- qplot(data=COVID,x=as.Date(COVID_Confirm_Date),y=DaysInHospital, label = P
 Newp3<- p3 + stat_smooth(color = "#FC4E07", fill = "#FC4E07", method = "loess")
 
 
-pdf("~/Singapore/Loess-Curve-3Periods.pdf", width = 8, height  = 6)
+pdf("~/COVID19-Singapore-master/Loess-Curve-3Periods.pdf", width = 8, height  = 6)
 grid.arrange(Newp1, Newp2, Newp3, ncol = 3, nrow = 1)
 dev.off()
 rm(list=ls())

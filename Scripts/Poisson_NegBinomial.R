@@ -19,7 +19,7 @@ package.check <- lapply(
 #summarytools -- #freq
 
 ####################################################################
-setwd("~/Singapore/Data") # Setting Working Directory
+setwd("~/COVID19-Singapore-master/Data") # Setting Working Directory
 COVID <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")    
 ##################  All Recovered Data Distribution ################
 
@@ -45,7 +45,7 @@ xlab <- fr$articles
 col <- rgb(0.33, 0.77, 0.24, alpha=0.5)
 gg <- ggplot(fr, aes(x = articles, y = freq))
 
-pdf("~/Singapore/Recover_DataDistribution_Plot.pdf", width = 10, height  = 6)
+pdf("~/COVID19-Singapore-master/Recover_DataDistribution_Plot.pdf", width = 10, height  = 6)
 
 gg +
   geom_col() +  
@@ -84,7 +84,7 @@ mm <- melt(comb, id.vars = 'x', value.name = 'prob', variable.name = 'Model')
 mm <- filter(mm, Model != "OLS") #can include the linear model too if you want
 
 
-pdf("~/Singapore/Poisson_NegBin_Distribution.pdf", width = 10, height  = 6)
+pdf("~/COVID19-Singapore-master/Poisson_NegBin_Distribution.pdf", width = 10, height  = 6)
 
 ggplot(mm, aes(x = x, y = prob, group = Model, col = Model)) +
   

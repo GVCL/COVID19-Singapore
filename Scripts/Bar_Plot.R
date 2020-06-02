@@ -1,9 +1,9 @@
 ###############################################
-setwd("~/Singapore/Data") # Setting Working Directory
+setwd("~/COVID19-Singapore-master/Data") # Setting Working Directory
 Cases <- read.csv('Datewise-Count.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")   
 ###############################################
 
-pdf("~/Singapore/Cases-Active.pdf", width = 10, height  = 6)
+pdf("~/COVID19-Singapore-master/Cases-Active.pdf", width = 10, height  = 6)
    
 xx <- barplot(Cases$ConFreq, 
 col="#ff6666",
@@ -25,7 +25,7 @@ grid(NA, 4, lwd = 2)
 dev.off()
 ###############################################
 
-pdf("~/Singapore/Cases-Recovered.pdf", width = 10, height  = 6)
+pdf("~/COVID19-Singapore-master/Cases-Recovered.pdf", width = 10, height  = 6)
    
 xpl <- barplot(Cases$DisFreq, 
 col="#89d678",

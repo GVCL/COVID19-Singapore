@@ -10,7 +10,7 @@ package.check <- lapply(
   }
 )
 ###############################################
-setwd("~/Singapore/Data") # Setting Working Directory
+setwd("~/COVID19-Singapore-master/Data") # Setting Working Directory
 COVID <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")    
 
 COVID <- COVID %>% 
@@ -18,7 +18,7 @@ COVID <- COVID %>%
    Gender1 = ifelse(Gender %in% c("MALE"), "A", "B") 
   )
   
-pdf("~/Singapore/ScatterPlot.pdf", width = 6, height  = 6)
+pdf("~/COVID19-Singapore-master/ScatterPlot.pdf", width = 6, height  = 6)
    
 scatterPlot <- ggplot(COVID, aes(x=Age, y=DaysInHospital, color=Gender1)) + 
 geom_point(size=3) +
