@@ -11,7 +11,7 @@ package.check <- lapply(
 )
 ###############################################
 setwd("~/Singapore/Data") # Setting Working Directory
-COVID <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")   
+COVID_DATA <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")   
 
 ##################### Period_I ##################################################### 
 subset <- COVID_DATA$Period_Confirmed == 'P_I'
