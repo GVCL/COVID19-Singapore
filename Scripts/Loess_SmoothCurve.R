@@ -1,5 +1,5 @@
 ###############################################
-requiredPackages = c('ggplot2','scales')
+requiredPackages = c('ggplot2','scales', 'gridExtra')
 package.check <- lapply(
   requiredPackages,
   FUN = function(x) {
@@ -11,13 +11,10 @@ package.check <- lapply(
 )
 ###############################################
 
-setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
-filePath <- "Data/"
-fileName <- "SortedRecoveryData.csv"
+setwd("~/Singapore/Data") # Setting Working Directory
+COVID <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")     
 
-COVID <- read.csv(paste(filePath,fileName,sep=""), sep=",", header = TRUE)  
-
-pdf("Loess-Curve.pdf", width = 10, height  = 6)
+pdf("~/Singapore/Loess-Curve.pdf", width = 10, height  = 6)
    
 # Loess Smoothing
 p <- qplot(data=COVID,x=as.Date(COVID_Confirm_Date),y=DaysInHospital, label = PatientID, geom=("point"), hjust=0, vjust=0)+ 
@@ -39,4 +36,5 @@ p + stat_smooth(color = "#FC4E07", fill = "#FC4E07", method = "loess")
 p + stat_smooth(aes(outfit=fit<<-..y..), color = "#FC4E07", fill = "#FC4E07", method = "loess")
 
 dev.off()
+rm(list=ls())
 ###############################################

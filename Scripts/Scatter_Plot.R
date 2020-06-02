@@ -10,18 +10,15 @@ package.check <- lapply(
   }
 )
 ###############################################
-setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
-filePath <- "Data/"
-fileName <- "SortedRecoveryData.csv"
-
-COVID <- read.csv(paste(filePath,fileName,sep=""), sep=",", header = TRUE)    
+setwd("~/Singapore/Data") # Setting Working Directory
+COVID <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")    
 
 COVID <- COVID %>% 
   mutate(
    Gender1 = ifelse(Gender %in% c("MALE"), "A", "B") 
   )
   
-pdf("ScatterPlot.pdf", width = 6, height  = 6)
+pdf("~/Singapore/ScatterPlot.pdf", width = 6, height  = 6)
    
 scatterPlot <- ggplot(COVID, aes(x=Age, y=DaysInHospital, color=Gender1)) + 
 geom_point(size=3) +
@@ -38,4 +35,5 @@ theme(legend.box.just = "right",
       axis.title=element_text(size=12,face="bold"))
 scatterPlot
 dev.off()
+rm(list=ls())
 ###############################################

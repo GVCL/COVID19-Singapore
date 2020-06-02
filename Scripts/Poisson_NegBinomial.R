@@ -17,14 +17,11 @@ package.check <- lapply(
 #pscl -- #for zero inflated models & predprob
 #reshape2 -- #convert wide to tall
 #summarytools -- #freq
+
 ####################################################################
-
-
-setwd('C:/Users/User/Documents/Singapore') # Setting Working Directory
-filePath <- "Data/"
-fileName <- "SortedRecoveryData.csv"
+setwd("~/Singapore/Data") # Setting Working Directory
+COVID <- read.csv('SortedRecoveryData.csv', sep=",", header = TRUE, fileEncoding="UTF-8-BOM")    
 ##################  All Recovered Data Distribution ################
-COVID <- read.csv(paste(filePath,fileName,sep=""), sep=",", header = TRUE)  
 
 COVID <- COVID %>% 
   mutate(Gender1 = ifelse(Gender %in% c("MALE"), 1, 2) 
@@ -48,7 +45,7 @@ xlab <- fr$articles
 col <- rgb(0.33, 0.77, 0.24, alpha=0.5)
 gg <- ggplot(fr, aes(x = articles, y = freq))
 
-pdf("Recover_DataDistribution_Plot.pdf", width = 10, height  = 6)
+pdf("~/Singapore/Recover_DataDistribution_Plot.pdf", width = 10, height  = 6)
 
 gg +
   geom_col() +  
@@ -87,7 +84,7 @@ mm <- melt(comb, id.vars = 'x', value.name = 'prob', variable.name = 'Model')
 mm <- filter(mm, Model != "OLS") #can include the linear model too if you want
 
 
-pdf("Poisson_NegBin_Distribution.pdf", width = 10, height  = 6)
+pdf("~/Singapore/Poisson_NegBin_Distribution.pdf", width = 10, height  = 6)
 
 ggplot(mm, aes(x = x, y = prob, group = Model, col = Model)) +
   
@@ -104,4 +101,5 @@ ggplot(mm, aes(x = x, y = prob, group = Model, col = Model)) +
   scale_x_continuous(labels = as.character(xlab), breaks = xlab) 
   
 dev.off()
+rm(list=ls())
 ####################################################################
