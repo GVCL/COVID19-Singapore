@@ -2,9 +2,7 @@ This project is a study of COVID-19 data. We have investigated various aspects o
 
 Code in R:
 ---------
-
-The default working directory to run the code is set to 'C:/Users/User/Documents/Singapore'.
-If the downloaded file location is different, please set the working directory accordingly, before you run the code.
+Please check for the working directory (getwd()) and place the folder at the location, before you run the code.
 
 Data files details:
 -------------------
