@@ -7,6 +7,7 @@ Please check for the working directory (getwd()) and place the folder at the loc
 For Python code
 ---------------
 git clone https://github.com/vrrani/COVID19-Singapore.git
+
 pip install -r requirements.txt
 
 Click the script to run or provide the respective file path in terminal as "python3 [scriptname].py" to run.
