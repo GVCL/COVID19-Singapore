@@ -4,11 +4,12 @@ Code in R:
 ---------
 Please check for the working directory (getwd()) and place the folder at the location, before you run the code.
 
-For python code
+For Python code
 ---------------
-git clone git@github.com:komaldadhich007/Covid-19-India-Demographic.git
-
 pip install -r requirements.txt
+
+Click the script to run or provide the respective file path in terminal as "python3 [scriptname].py" to run.
+
 Data files details:
 -------------------
 1. SingaporeCovid19RecoveryDatasetJan23-Apr01.csv - Is the file with the first 1000 COVID infected case details.
