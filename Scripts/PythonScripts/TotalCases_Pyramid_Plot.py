@@ -10,9 +10,9 @@ from plotly.offline import init_notebook_mode
 
 
 url='https://raw.githubusercontent.com/vrrani/COVID19-Singapore/master/Data/SingaporeCovid19RecoveryDatasetJan23-Apr01.csv'
-df = pd.read_csv(url)
-
-df
+#df = pd.read_excel('SingaporeCoviddataset.xlsx', sheet_name = 0)
+parse_dates=['Date of +ve-confirm', 'Date of symptom onset', 'Date of discharge']
+df = pd.read_csv(url, parse_dates=parse_dates)
 
 ip=df[['Age','Gender','#Days-prehospital','#Days-hospital','Date of discharge']]
 
