@@ -54,9 +54,6 @@ womenR_bins = np.array(list(dataFr.values()))
 menR_bins = np.negative(np.array(list(dataMr.values())))
 women_bins =np.array(list(dataF.values()))
 men_bins = np.negative(np.array(list(dataM.values())))
-men_bins=men_bins-menR_bins
-women_bins=women_bins-womenR_bins
-
 
 
 y = list(dataF.keys())
@@ -74,63 +71,15 @@ data = [go.Bar(y=y,
                x=women_bins,
                orientation='h',
                name='#female patients (active)',
-               hoverinfo='x',
-               marker=dict(color='#d9d9d9')
+               text=(women_bins-womenR_bins).astype('int'),
+               hoverinfo='text',
+               marker=dict(color='#DF65B0')
                ),
         go.Bar(y=y,
                x=men_bins,
                orientation='h',
                name='#male patients (active)',
-               text=-1 * men_bins.astype('int'),
-               hoverinfo='text',
-               marker=dict(color='#737373')
-               ),
-       go.Bar(y=y,
-               x=womenR_bins,
-               orientation='h',
-               name='#female patients (clinically recovered)',
-               hoverinfo='x',
-               marker=dict(color='#f2f2f2')
-               ),
-        go.Bar(y=y,
-               x=menR_bins,
-               orientation='h',
-               name='#male patients (clinically recovered)',
-               text=-1 * menR_bins.astype('int'),
-               hoverinfo='text',
-               marker=dict(color='#999999')
-               )]
-choromap = go.Figure(dict(data=data, layout=layout))
-choromap.layout.update(legend=dict(x=-.1, y=1.3))
-choromap.update_xaxes(showline=True, linewidth=1, linecolor='black')
-choromap.update_yaxes(showline=True, linewidth=1, linecolor='black')
-plotly.offline.init_notebook_mode(connected=True)
-plotly.offline.plot(choromap)
-
-
-y = list(dataF.keys())
-layout = go.Layout(yaxis=go.layout.YAxis(title='<b>Age Groups</b>'),
-                   xaxis=go.layout.XAxis(
-                       range=[-155,120],
-                       tickvals=[-155,-125,-115,-100,-85,-50,-30,-20,-10,-5,0,5,10,20,30,65,75,100,120],
-                       ticktext=[155,125,115,100,85,50,30,20,10,5,0,5,10,20,30,65,75,100,120],
-                       title='<b>Total Number of Patients</b>'),
-                   barmode='overlay',
-                   font=dict(family='Times News Roman', size=16, color='black'),
-                   bargap=0.2)
-
-data = [go.Bar(y=y,
-               x=women_bins+womenR_bins,
-               orientation='h',
-               name='#female patients (active)',
-               hoverinfo='x',
-               marker=dict(color='#DF65B0')
-               ),
-        go.Bar(y=y,
-               x=men_bins+menR_bins,
-               orientation='h',
-               name='#male patients (active)',
-               text=-1 * men_bins.astype('int'),
+               text=-1 *(men_bins-menR_bins).astype('int'),
                hoverinfo='text',
                marker=dict(color='#08519C')
                ),
@@ -154,7 +103,7 @@ choromap.layout.update(legend=dict(x=-.1, y=1.3))
 choromap.update_xaxes(showline=True, linewidth=1, linecolor='black')
 choromap.update_yaxes(showline=True, linewidth=1, linecolor='black')
 plotly.offline.init_notebook_mode(connected=True)
-plotly.offline.plot(choromap)
+plotly.offline.plot(choromap,filename='PyramidPlot_TotalCasesVsAgeGroups.html')
 
 
 

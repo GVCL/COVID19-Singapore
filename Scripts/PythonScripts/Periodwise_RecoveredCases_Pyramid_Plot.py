@@ -164,7 +164,8 @@ data = [go.Bar(y=y,
                x=womenR3_bins+womenR2_bins,
                orientation='h',
                name='#Clinically Recovered Patients during P_3 (Mar 17,2020 - Apr 01,2020)',
-               hoverinfo='x',
+               text=womenR3_bins.astype('int'),
+               hoverinfo='text',
                marker=dict(color='#89d678')
                ),
         go.Bar(y=y,
@@ -196,15 +197,9 @@ choromap.layout.update(legend=dict(x=-.1, y=1.2))
 choromap.update_xaxes(showline=True, linewidth=1, linecolor='black')
 choromap.update_yaxes(showline=True, linewidth=1, linecolor='black')
 plotly.offline.init_notebook_mode(connected=True)
-plotly.offline.plot(choromap)
+plotly.offline.plot(choromap,filename='PyramidPlotforRecoveredCases.html')
 
 
-print(dataM1.values())
-print(dataF1.values())
-print(dataM2.values())
-print(dataF2.values())
-print(dataM3.values())
-print(dataF3.values())
 
 
 

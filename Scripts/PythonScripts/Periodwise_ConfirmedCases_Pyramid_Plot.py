@@ -165,21 +165,24 @@ data = [go.Bar(y=y,
                x=women3_bins+women2_bins+women1_bins,
                orientation='h',
                name='#Confirmed Patients during P_3 (Mar 17,2020 - Apr 01,2020)',
-               hoverinfo='x',
+               text=women3_bins.astype('int'),
+               hoverinfo='text',
                marker=dict(color='#ff8080')
                ),
         go.Bar(y=y,
                x=women2_bins+women1_bins,
                orientation='h',
                name='#Confirmed Patients during P_2 (Feb 04,2020 - Mar 16,2020)',
-               hoverinfo='x',
+               text=women2_bins.astype('int'),
+               hoverinfo='text',
                marker=dict(color='#ff4d4d')
                ),
        go.Bar(y=y,
                x=women1_bins,
                orientation='h',
                name='#Confirmed Patients during P_1 (Jan 23,2020 - Feb 03,2020)',
-               hoverinfo='x',
+               text=women1_bins.astype('int'),
+               hoverinfo='text',
                marker=dict(color='#cc0000')
                ),
         go.Bar(y=y,
@@ -212,7 +215,7 @@ choromap.layout.update(legend=dict(x=-.1, y=1.2))
 choromap.update_xaxes(showline=True, linewidth=1, linecolor='black')
 choromap.update_yaxes(showline=True, linewidth=1, linecolor='black')
 plotly.offline.init_notebook_mode(connected=True)
-plotly.offline.plot(choromap)
+plotly.offline.plot(choromap,filename='PyramidPlotforConfirmedCases.html')
 
 
 
